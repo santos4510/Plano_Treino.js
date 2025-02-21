@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./servicesPlanoTreino.js"></script>
+    <script src="./Classes/planoTreinoH.js"></script>
+    <script src="./Classes/planoTreinoF.js"></script>
+    <script src="./Classes/planoTreinoC.js"></script>
+    <script src="./Classes/dieta.js"></script>
+    <script src="./Classes/cliente.js"></script>
+    <script src="./calculate_imc.js"></script>
+    <script src="./servicesDietas.js"></script>
+    
+</body>
+</html>
+
+<script>
+
+function main(){
+
+    // let sexo = prompt ("Diz o teu sexo:")
+    // let idade = prompt ("Diz a tua idade:");
+    // let altura = prompt ("Diz a tua altura em centimetros:");
+    // let peso = prompt ("Diz o teu peso em kilogramas:"); 
+    let sexo = "M";
+    let idade = 14;
+    let altura = 170;
+    let peso = 50;
+    let cliente = new Cliente(sexo, idade, altura, peso);
+
+    let imc = calcularIMC(altura, peso);
+    //dietas
+    estadoatual(cliente, imc);
+    
+    listarTodasRefeicoes(cliente.dieta);
+    
+    let resposta = validarDieta();
+    if (resposta) {
+        validarRefeicoes(cliente.dieta);
+    }
+
+    //treinos
+    definirPlanoTreino(cliente);
+
+    listarTodosTreinos(cliente.planoTreino);
+    let respostexer = validarTreino();
+    if (respostexer) {
+        validarTreinos(cliente.planoTreino);
+    }
+
+    //end app
+    console.log(cliente)
+}
+
+main();
+
+</script>
